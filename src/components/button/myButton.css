@@ -1,0 +1,12 @@
+:root{
+  --color-primary: #4382ff;
+}
+
+.MyButton{
+  color: var(--color-primary);
+  border-radius: 10px;
+  border: 1px solid var(--color-primary);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 5px 3px;
+}
