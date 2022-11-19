@@ -1,13 +1,18 @@
 
-import './styles/Common.css';
+
 import './styles/components/Header1.css'
 import Header1 from './components/SignIn/Header1';
+import Footer from './components/SignIn/Footer';
+
 
 function App() {
   return (
-    
+    <>
     <Header1/>
-
+     
+  
+    <Footer/>
+    </>
     // <div className="App">
     //   <header className="header__header1">
     //     <img src={logo} className="App-logo" alt="logo" />
@@ -26,5 +31,6 @@ function App() {
     // </div>
   );
 }
+
 
 export default App;

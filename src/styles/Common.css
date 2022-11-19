@@ -27,3 +27,13 @@
 
     
 }
+
+.group-logo-style--standard {
+    display: flex;
+    align-items: center;
+    width: 257px;
+    height: 48px;
+    gap: 42px;
+
+
+}

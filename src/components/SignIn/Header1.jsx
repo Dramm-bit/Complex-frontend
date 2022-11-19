@@ -1,13 +1,14 @@
 import React from "react";
 import '../../styles/components/Header1.css'
 import logo from '../../resources/logo.jpg';
+import '../../styles/Common.css';
 
 export default function Header1() {
     return (
 
         <section className="header">
             <header className="header__header1">
-                <div className="header__group-logo">
+                <div className="header__group-logo group-logo-style--standard">
                      <img src={logo} className="header__img logo--standard"></img>
                     <div className="header__title company--standard">ConSM</div>
                 </div>
