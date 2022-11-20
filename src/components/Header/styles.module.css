@@ -1,0 +1,31 @@
+.header {
+    width: 100vw;
+    height: 80px;
+    border-radius: 10px;
+}
+
+
+.header__header {
+    display: flex;
+    height: 80px;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 2px 4px #707070;
+}
+
+.company--standard {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    color: #000000;
+}
+
+.header__botton-header{
+    display: flex;
+    gap:19px;
+    margin-right: 100px;
+}
+
