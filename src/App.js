@@ -1,21 +1,16 @@
-
-
-import './styles/Header1.css'
-import Header1 from './components/SignIn/Header1';
-import Footer from './components/Footer';
-import Form from './components/SignIn/Form';
-
+import Header from './components/Header/Header';
+import "./index.css"
 
 function App() {
   return (
     <>
-    <Header1/>
+    <Header/>
      
-     <Form/>
+     {/* <Form/>
 
      
   
-    <Footer/>
+    <Footer/> */}
     </>
     // <div className="App">
     //   <header className="header__header1">

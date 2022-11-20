@@ -1,9 +1,9 @@
-import Header1 from "components/SignIn/Header1";
+import Header from "components/Header/Header";
 import React from "react";
 
 export default function SignIn(){
     return(
-        <Header1/>
+        <Header/>
                 
 
     );

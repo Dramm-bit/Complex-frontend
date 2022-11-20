@@ -1,7 +1,7 @@
 import React from "react";
-import '../styles/Footer.css'
 import logo from '../resources/logo.jpg';
-import '../styles/Common.css';
+import styles from "./styles.module.css"
+
 
 export default function Footer() {
     return (
