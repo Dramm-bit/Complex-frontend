@@ -1,5 +1,5 @@
 import React from "react";
-import '../../styles/components/Header1.css'
+import '../../styles/Header1.css'
 import logo from '../../resources/logo.jpg';
 import '../../styles/Common.css';
 

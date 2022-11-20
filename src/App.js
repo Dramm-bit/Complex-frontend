@@ -1,14 +1,18 @@
 
 
-import './styles/components/Header1.css'
+import './styles/Header1.css'
 import Header1 from './components/SignIn/Header1';
-import Footer from './components/SignIn/Footer';
+import Footer from './components/Footer';
+import Form from './components/SignIn/Form';
 
 
 function App() {
   return (
     <>
     <Header1/>
+     
+     <Form/>
+
      
   
     <Footer/>
