@@ -1,11 +1,16 @@
 import SignIn from './pages/SignIn.jsx';
-import Header from './components/Header/Header.jsx';
-import "./index.css"
+import "./index.css";
+import SignUp from './pages/SignUp.jsx';
+import CreateHouse from './pages/CreateHouse.jsx';
+import CreateComplex from './pages/CreateComplex.jsx';
 
 function App() {
   return (
     <>
-    <SignIn/>
+    {/* <SignIn /> */}
+    {/* <CreateHouse/> */}
+    {/* <CreateComplex/> */}
+    {/* <SignUp/> */}
      
      {/* <Form/>
 
