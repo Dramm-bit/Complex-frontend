@@ -30,6 +30,16 @@
   
 }
 
+.company--standard {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+}
+
 .group-logo-style--standard {
   display: flex;
   align-items: center;
