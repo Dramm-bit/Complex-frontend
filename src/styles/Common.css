@@ -1,0 +1,39 @@
+.header__button {
+    width: 100px;
+    height: 35px;
+    cursor: pointer;
+}
+
+.button--standard {
+    background: #25A7F0;
+    border: 2px solid #25A7F0;
+    border-radius: 7px;
+    color: white;
+}
+
+.button--standard:hover {
+    background: #208ece;
+}
+
+.button--style2:hover {
+    background: rgb(233, 231, 231);
+}
+
+.button--style2 {
+    border: 2px solid #25A7F0;
+    background: white;
+    border-radius: 7px;
+    color: #25A7F0;
+
+    
+}
+
+.group-logo-style--standard {
+    display: flex;
+    align-items: center;
+    width: 257px;
+    height: 48px;
+    gap: 42px;
+
+
+}
