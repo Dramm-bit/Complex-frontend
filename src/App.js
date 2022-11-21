@@ -1,39 +1,38 @@
-import SignIn from './pages/SignIn.jsx';
+
 import "./index.css";
-import SignUp from './pages/SignUp.jsx';
-import CreateHouse from './pages/CreateHouse.jsx';
-import CreateComplex from './pages/CreateComplex.jsx';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import SignUp from "./pages/FormSignUp/SignUp";
+import SignIn from "./pages/FormSignIn/SignIn";
+import { BrowserRouter, Route, Routes,Navigate } from "react-router-dom";
+import ListResidences from "./pages/ListResidences/ListResidences";
+import CreateHouse from "./pages/CreateHouse/CreateHouse"
+import CreateResidence from "./pages/CreateResidence/CreateResidence"
+import ResidenceDetails from "./pages/ResidenceDetails/ResidenceDetails"
 
 function App() {
+  
   return (
     <>
-    {/* <SignIn /> */}
-    {/* <CreateHouse/> */}
-    {/* <CreateComplex/> */}
-    {/* <SignUp/> */}
-     
-     {/* <Form/>
+      <BrowserRouter>
+        <Routes>
+            <Route path="/" element={<Navigate to="/sign-in"/>}/>
+            <Route path="/sign-in" element={<SignIn/>}/>
+            <Route path="/sign-up" element={<SignUp/>}/>
+            <Route path="/residences" element={<ListResidences/>}/>
+            <Route path="/residences/create" element={<CreateResidence/>}/>
+            <Route path="/residences/:residenceId/houses/create" element={<CreateHouse/>}/>
+            <Route path="/residences/:residenceId/houses" element={<ResidenceDetails/>}/>
+            <Route path="/residences/house/edit/:houseId" element={<></>}/>
+
+        </Routes>
+
+      </BrowserRouter>
+      <ToastContainer/>
 
      
-  
-    <Footer/> */}
     </>
-    // <div className="App">
-    //   <header className="header__header1">
-    //     <img src={logo} className="App-logo" alt="logo" />
-    //     <p>
-    //       Edit <code>src/App.js</code> and save to reload.
-    //     </p>
-    //     <a
-    //       className="App-link"
-    //       href="https://reactjs.org"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //       Learn React
-    //     </a>
-    //   </header>
-    // </div>
+    
   );
 }
 

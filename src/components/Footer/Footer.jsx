@@ -9,7 +9,7 @@ export default function Footer() {
         <section className={styles["container-footer"]}>
             <footer className={styles["content-footer"]}>
                 <div className={"group-logo-style"}>
-                    <img src={logo} className={"footer-img logo--standard"}></img>
+                    <img alt="standart-logo" src={logo} className={"footer-img logo--standard"}></img>
                     <div className={"title-logo"}>ConSM</div>
                 </div>
                 <div className={styles["footer__copyright"]}>©web 2022</div>

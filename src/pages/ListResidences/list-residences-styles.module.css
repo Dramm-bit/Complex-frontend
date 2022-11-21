@@ -1,0 +1,47 @@
+
+.container-card{
+    display: flex;
+    flex-wrap: wrap;
+    width:100%;
+    column-gap: 1.7rem;
+    padding:1rem;
+    margin-right:10px;
+    row-gap:12px;
+}
+.content-card{
+    box-shadow:0px 0px 3px rgba(0,0,0,0.5);
+   
+}
+
+.img{
+    
+    margin-top:10px;
+    width: 200px;
+    height: 90px;
+} 
+.title{
+    font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 800;
+}
+.subtitle{
+    font-family: 'Inter', sans-serif;
+font-style: normal;
+    font-size:14px;
+    margin-top:5px;
+}
+.text{
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    height:50px
+}
+
+.group-button{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-right: 10px;
+}
+.blue{
+    color:#25A7F0;
+}

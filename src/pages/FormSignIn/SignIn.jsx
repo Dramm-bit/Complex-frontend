@@ -1,9 +1,9 @@
-import Header from "../components/Header/Header";
-import Footer from "../components/Footer/Footer";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 import React, { useState } from "react";
-import { sendSignInData } from "../services";
-import styles from '../components/FormSignIn/formLog-styles.module.css';
-
+import { sendSignInData } from "../../services";
+import styles from './form-sign-in-styles.module.css';
+import { toast } from 'react-toastify';
 
 export default function SignIn() {
     const [formData, setFormData] = useState({
@@ -28,7 +28,7 @@ export default function SignIn() {
             console.log(response)
         } catch (error) {
             console.error(error)
-            alert("Ha habido un error")
+            toast.error("Ha habido un error al conectarse con el servidor")
         }
     }
     

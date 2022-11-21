@@ -1,25 +1,21 @@
-import Header from "../components/Header/Header";
-import Footer from "../components/Footer/Footer";
-import styles from "../components/FormRegister/formR-style.module.css";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
+import styles from "./form-sign-up-style.module.css";
 import { useState } from "react";
+import { toast } from 'react-toastify';
+import {sendSignUpData} from "../../services"
 
 
 export default function SignUp() {
-    const [formData,setFormData]=useState({
-        first_name:"",
-        last_name:"",
+    const [formData,setFormData] = useState({
         email:"",
         password:""
 
     })
 
     const registerData = (event) => {
-     
-
         const name = event.target.name
         const value = event.target.value
-        
-        {console.log(value)}
 
         setFormData({
             ...formData,
@@ -28,6 +24,16 @@ export default function SignUp() {
         })
 
     }
+    const sendRegisterData = async (event) => {
+        event.preventDefault()
+
+        try {
+            //logica
+            await sendSignUpData(formData)
+        } catch (error) {
+            toast.error("Ha habido un error al conectarse con el servidor")
+        }
+    }
 
     return (
         <>
@@ -35,7 +41,7 @@ export default function SignUp() {
 
 
             <section className={"container--form"}>
-                <form className={styles["content-form"]}>
+                <form onSubmit={sendRegisterData} className={styles["content-form"]}>
                     <div className={styles["container-form__title"]}>Sign up for a new account</div>
 
                 <input onChange ={registerData} type="email" id={styles["size"]} name="email" placeholder="Email"></input>
