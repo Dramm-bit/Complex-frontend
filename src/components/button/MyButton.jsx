@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import './myButton.css'
 
-export function MyButton({children}){
+export function MyButton({children, to}){
   return (
-    <button className="MyButton" onClick={()=>console.log("presionado")}>
+    <Link to={to} className="MyButton">
       {children}
-    </button>
+    </Link>
   )
 }

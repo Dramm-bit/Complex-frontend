@@ -1,0 +1,12 @@
+.casas{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.casas__title{
+  margin: 120px 0 15px 0;
+}
+.table--container{
+  width: 80vw;
+}

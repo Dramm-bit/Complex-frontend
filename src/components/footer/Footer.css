@@ -1,0 +1,9 @@
+.footer{
+  width: 100%;
+  min-height:220px;
+  max-height: 300px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border-top: 1px solid #000;
+}

@@ -5,30 +5,29 @@
   position: fixed;
   border-bottom: 3px solid #000;
   width: 100%;
-  margin: 0 0 10px 0 ;
+  height: 80px;
 }
 .header__nav{
   display: flex;
+  height: 100%;
+  width: 100%;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
 }
 .header__nav__list{
+  width: 100%;
   list-style: none;
-}
-.header__nav__list__element{
   display: flex;
-  min-width: 240px;
-  height: 30px;
   flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
+
 .element__Link{
-  width: 120px;
-  height: 30px;
+  width: 200px;
+  height: 40px;
   text-decoration: none;
   text-align: center;
   color: var(--color-primary);
