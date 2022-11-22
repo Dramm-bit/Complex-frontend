@@ -25,22 +25,22 @@ export default function Header(props) {
                 <div className={'group-logo-style'}>
                     <img alt="main_logo" src={logo} className={'header-img logo--standard'}></img>
                     <div className={'title-logo'}>ConSM</div>
-                    {
-
-                        props.redirectText && <button className={"create-buton button--blue"} onClick={goToAnotherPage}>{props.redirectText}</button>
-
-                    }
+                <div >
+                {props.redirectText && <button className={"size-button button--blue"} onClick={goToAnotherPage}>{props.redirectText}</button>}
+                </div>
+                    
                 </div>
                 <div className={styles['group-button']}>
+
                     {props.flag ?
-                    <>
-                        <button onClick={goToLogin} className={'size-button button--white'}> Log in</button>
-                        <button onClick={goToRegister} className={"size-button button--blue"}>Register</button>
-                    </>
-                    : 
-                    <button onClick={closeSession} className={"size-button button--blue"}>Log out</button>
+                        <>
+                            <button onClick={goToLogin} className={'size-button button--white'}> Log in</button>
+                            <button onClick={goToRegister} className={"size-button button--blue"}>Register</button>
+                        </>
+                        :
+                        <button onClick={closeSession} className={"size-button button--blue"}>Log out</button>
                     }
-                    
+
                 </div>
             </header>
         </section>

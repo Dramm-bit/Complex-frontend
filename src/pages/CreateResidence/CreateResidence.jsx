@@ -47,9 +47,9 @@ export default function CreateResidence(){
             <section className={"container--form"}>
             <form onSubmit={sendResidenceData} className={styles['content_form']}>
                 <div className={styles["form-title"]}>Nombre del conjunto</div>
-                <input onChange={updateData} type="text" id={styles["form"]} name="name" placeholder="Nombre"/>
-                <input onChange={updateData} type="text" id={styles["form"]} name="address" placeholder="Dirección"/>
-                <div id={styles['space']}>
+                <input onChange={updateData} type="text" className={styles["form"]} name="name" placeholder="Nombre"/>
+                <input onChange={updateData} type="text" className={styles["form"]} name="address" placeholder="Dirección"/>
+                <div className={styles['space']}>
                 <button type="submit" className={"button--blue"}>create</button>
                 <button className={"button--white"}>cancel</button>
                 </div>

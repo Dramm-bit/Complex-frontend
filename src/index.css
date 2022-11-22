@@ -65,9 +65,11 @@ display: flex;
 align-items: center;
 color: #000000;
 
+
 }
 
 .size-button {
+ 
   width: 100px;
   height: 35px;
   cursor: pointer;

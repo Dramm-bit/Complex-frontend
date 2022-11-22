@@ -1,5 +1,9 @@
 
 import "./index.css";
+import "primereact/resources/themes/lara-light-indigo/theme.css";  //theme
+import "primereact/resources/primereact.min.css";                  //core css
+import "primeicons/primeicons.css"; 
+
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SignUp from "./pages/FormSignUp/SignUp";
@@ -22,14 +26,15 @@ function App() {
             <Route path="/residences" element={<ListResidences/>}/>
             <Route path="/residences/create" element={<CreateResidence/>}/>
             <Route path="/residences/:residenceId/houses/create" element={<CreateHouse/>}/>
-            <Route path="/residences/:residenceId/houses" element={<ResidenceDetails/>}/>
+            <Route path="/residences/houses" element={<ResidenceDetails/>}/>
             <Route path="/residences/house/edit/:houseId" element={<></>}/>
 
         </Routes>
 
       </BrowserRouter>
+    
       <ToastContainer/>
-
+    
      
     </>
     
