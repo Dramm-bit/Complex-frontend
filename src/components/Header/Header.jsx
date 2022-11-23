@@ -18,15 +18,25 @@ export default function Header(props) {
     const goToAnotherPage = () => {
         navigate(props.redirectPath)
     }
+    const goToHome = () =>{
+        navigate('/residences')
+
+    }
+
+
+
+
+
+    
     return (
 
         <section className={styles['contaienr-header']}>
             <header className={styles['header']}>
                 <div className={'group-logo-style'}>
-                    <img alt="main_logo" src={logo} className={'header-img logo--standard'}></img>
+                    <img alt="main_logo" src={logo} onClick={goToHome} className={'header-img logo--standard'}></img>
                     <div className={'title-logo'}>ConSM</div>
                 <div >
-                {props.redirectText && <button className={"size-button button--blue"} onClick={goToAnotherPage}>{props.redirectText}</button>}
+                {props.redirectText && <button className={styles["button"]} onClick={goToAnotherPage}>{props.redirectText}</button>}
                 </div>
                     
                 </div>

@@ -1,18 +1,17 @@
-import React, { useState, useCallback, useEffect } from 'react'
-import { getHouses, deleteHouse } from "../../services"
-import { useNavigate, useParams } from 'react-router-dom'
-import { toast } from "react-toastify"
-
-
+import React, { useEffect, useState, useCallback } from 'react'
+import Footer from '../../components/Footer/Footer';
+import Header from '../../components/Header/Header';
+import { getResidences, deleteResidence, getHouses, deleteHouse } from "../../services"
+import { toast } from 'react-toastify';
+import thumbnail from '../../resources/thumbnail.jpg';
+import styles from './list-houses-styles.module.css';
+import { useNavigate, useParams } from "react-router-dom";
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 
 
 
-import Header from "../../components/Header/Header"
-import Footer from '../../components/Footer/Footer'
-import styles from "./residence-details-style.module.css"
-const ResidenceDetails = () => {
+const ListHouses = () => {
     const [houses, setHouses] = useState([])
     const navigate = useNavigate()
     const { residenceId } = useParams();
@@ -68,7 +67,7 @@ const ResidenceDetails = () => {
 
                         <div class={styles["container"]}>
 
-                            <DataTable value={house.id}>
+                            <DataTable value={house}>
 
                                 <Column selectionMode="multiple" headerStyle={{ width: '2rem' }} exportable={false}></Column>
                                 <Column field="code" header="Code" style={{ minWidth: '12rem' }}></Column>
@@ -78,7 +77,7 @@ const ResidenceDetails = () => {
                             <div className={styles["options"]}>
                                 <div className={styles["title-header"]}>Opciones</div>
                                 <div className={styles["shadow"]}>
-                                    <span className={styles['text1']} onClick={() => goToEditHouse(house.id)}>edit</span>
+                                    <span className={styles['text1']} onClick={goToEditHouse}>edit</span>
                                     <span className={styles['text2']} onClick={() => removeHouse(house.id)}>|delete</span>
                                 </div>
                             </div>
@@ -86,16 +85,41 @@ const ResidenceDetails = () => {
 
                         </div>
 
-                        
+
                     </>
                 ))
             }
 
 
-                                    
+            {/* <div class={styles["container"]}>
+
+                <div class={styles["group"]}>
+                    <div className={styles['title']}>Lista de casas del conjunto </div> como concadenar con el nombre del conjunto  */}
+
+                    {/* <DataTable>
+
+                        <Column selectionMode="multiple" headerStyle={{ width: '2rem' }} exportable={false}></Column>
+                        <Column field="code" header="Code" style={{ minWidth: '12rem' }}></Column>
+                        <Column field="name" header="Name" style={{ minWidth: '16rem' }}></Column>
+
+                    </DataTable>
+                </div>
+                <div className={styles["options"]}>
+                    <div className={styles["title-option"]}>Opciones</div>
+                    <div className={styles["shadow"]}>
+                        <span className={styles['text1']} onClick={goToEditHouse}>edit</span>
+                        <span className={styles['text2']} >|delete</span>
+                    </div>
+                </div>
+
+
+            </div> */}
+
+
             <Footer />
         </>
     )
 }
 
-export default ResidenceDetails
+export default ListHouses
+///api/v1/residences/{residence_id}/house/{id}

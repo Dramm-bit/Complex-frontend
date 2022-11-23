@@ -3,8 +3,11 @@ import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import { getResidences, deleteResidence } from "../../services"
 import { toast } from 'react-toastify';
-import logo from '../../resources/logo.jpg';
+import thumbnail from '../../resources/thumbnail.jpg';
 import styles from './list-residences-styles.module.css';
+import { useNavigate } from "react-router-dom";
+
+
 
 const ListResidences = () => {
     const [residences, setResidences] = useState([])
@@ -39,6 +42,15 @@ const ListResidences = () => {
             })
         }
     }
+    const navigate = useNavigate()
+    const goToHouseDetails = () => {
+        navigate('/residences/:residenceId/houses')
+
+    }
+
+    const goToEditResidence = () => {
+        navigate('/:residenceId/edit')
+    }
 
     return (
         <>
@@ -48,29 +60,56 @@ const ListResidences = () => {
                 residences.map(residence => (
                     <div>
 
-                         <section className={styles['container-card']}>
 
-                            <div className={styles['content-card']}>
-                                <img alt="main_logo" src={logo} className={styles['img']}></img>
-                                <div className={styles['text']}>
-                                    <div className={styles['title']}>hola que hace</div>
-                                    <div className={styles["subtitle"]}>x2</div>
+
+                        <section className={styles['container-card']}>
+
+                            <div className={styles['content-card']} >
+                                <div onClick={goToHouseDetails}>
+                                    <img alt="main_logo" src={thumbnail} className={styles['img']}></img>
+                                    <div className={styles['text']}>
+                                        <div className={styles['title']}>{retrieveResidences.name}</div>
+                                        <div className={styles["subtitle"]}>x2</div>
+                                    </div>
                                 </div>
-                                <div className={styles['group-button']}>
-                                    <div>|erase</div>
-                                    <div className={styles['blue']}>edit</div>
+                                <div className={styles["options"]}>
+                                    <div className={styles["title-option"]}>Opciones</div>
+                                    <div className={styles["shadow"]}>
+                                        <span className={styles['text2']} >|delete</span>
+                                        <span className={styles['text1']} onClick={goToEditResidence}>edit</span>
+                                    </div>
                                 </div>
 
                             </div>
 
                         </section>
-                        <h1>{residence.name}</h1>
-                        <button onClick={() => removeResidence(residence.id)}>Eliminar</button>
                     </div>
                 ))
             }
+
+            {/* <section className={styles['container-card']}>
+
+                <div className={styles['content-card']} >
+                      <div onClick={goToHouseDetails}>
+                        <img alt="main_logo" src={thumbnail} className={styles['img']}></img>
+                        <div className={styles['text']}>
+                            <div className={styles['title']}>hola que hace</div>
+                            <div className={styles["subtitle"]}>x2</div>
+                        </div>
+                      </div>
+                    <div className={styles["options"]}>
+                        <div className={styles["title-option"]}>Opciones</div>
+                        <div className={styles["shadow"]}>
+                            <span className={styles['text2']} >|delete</span>
+                            <span className={styles['text1']} onClick={goToEditResidence}>edit</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section> */}
             <Footer />
-            
+
 
         </>
     )

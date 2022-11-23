@@ -13,6 +13,8 @@ import ListResidences from "./pages/ListResidences/ListResidences";
 import CreateHouse from "./pages/CreateHouse/CreateHouse"
 import CreateResidence from "./pages/CreateResidence/CreateResidence"
 import ResidenceDetails from "./pages/ResidenceDetails/ResidenceDetails"
+import HousesDetails from "./pages/HouseDetails/HousesDetails";
+import ListHouses from "./pages/ListHouses/ListHouses";
 
 function App() {
   
@@ -26,8 +28,9 @@ function App() {
             <Route path="/residences" element={<ListResidences/>}/>
             <Route path="/residences/create" element={<CreateResidence/>}/>
             <Route path="/residences/:residenceId/houses/create" element={<CreateHouse/>}/>
-            <Route path="/residences/houses" element={<ResidenceDetails/>}/>
-            <Route path="/residences/house/edit/:houseId" element={<></>}/>
+            <Route path="/residences/:residenceId/houses" element={<ListHouses/>}/>
+            <Route path="/residences/house/edit/:houseId" element={<HousesDetails/>}/>
+            <Route path="/:residenceId/edit" element={<ResidenceDetails/>}/>
 
         </Routes>
 

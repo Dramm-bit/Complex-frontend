@@ -11,8 +11,9 @@ import { Column } from 'primereact/column';
 
 import Header from "../../components/Header/Header"
 import Footer from '../../components/Footer/Footer'
-import styles from "./residence-details-style.module.css"
-const ResidenceDetails = () => {
+import styles from "./houses-details-styles.module.css"
+
+const HousesDetails = () => {
     const [houses, setHouses] = useState([])
     const navigate = useNavigate()
     const { residenceId } = useParams();
@@ -40,7 +41,7 @@ const ResidenceDetails = () => {
             // se debe validar rol
             await deleteHouse(id)
         } catch (error) {
-            toast("Ha habido un error al eliminar la residencia", {
+            toast("Ha habido un error al eliminar la casa", {
                 hideProgressBar: true,
                 autoClose: 3000,
                 position: 'bottom-right'
@@ -66,36 +67,23 @@ const ResidenceDetails = () => {
                             <button onClick={() => removeHouse(house.id)}>Eliminar</button>
                         </div> */}
 
-                        <div class={styles["container"]}>
-
-                            <DataTable value={house.id}>
-
-                                <Column selectionMode="multiple" headerStyle={{ width: '2rem' }} exportable={false}></Column>
-                                <Column field="code" header="Code" style={{ minWidth: '12rem' }}></Column>
-                                <Column field="name" header="Name" style={{ minWidth: '16rem' }}></Column>
-
-                            </DataTable>
-                            <div className={styles["options"]}>
-                                <div className={styles["title-header"]}>Opciones</div>
-                                <div className={styles["shadow"]}>
-                                    <span className={styles['text1']} onClick={() => goToEditHouse(house.id)}>edit</span>
-                                    <span className={styles['text2']} onClick={() => removeHouse(house.id)}>|delete</span>
-                                </div>
-                            </div>
-
-
-                        </div>
-
-                        
                     </>
                 ))
             }
+            {/* <div className="card p-fluid">
+                <h5>Row Editing</h5>
+                <DataTable editMode="row" dataKey="id" onRowEditComplete={onRowEditComplete1} responsiveLayout="scroll"> */}
+                    {/* <Column field="code" header="Code" editor={(options) => textEditor(options)} style={{ width: '20%' }}></Column>
+                    <Column field="name" header="Name" editor={(options) => textEditor(options)} style={{ width: '20%' }}></Column>
+                    <Column field="inventoryStatus" header="Status" body={statusBodyTemplate} editor={(options) => statusEditor(options)} style={{ width: '20%' }}></Column>
+                    <Column field="price" header="Price" body={priceBodyTemplate} editor={(options) => priceEditor(options)} style={{ width: '20%' }}></Column>
+                    <Column rowEditor headerStyle={{ width: '10%', minWidth: '8rem' }} bodyStyle={{ textAlign: 'center' }}></Column>
+                </DataTable>
+            </div> */}
 
-
-                                    
             <Footer />
         </>
     )
 }
 
-export default ResidenceDetails
+export default HousesDetails

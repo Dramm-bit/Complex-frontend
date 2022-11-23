@@ -49,10 +49,10 @@ export default function CreateResidence(){
                 <div className={styles["form-title"]}>Nombre del conjunto</div>
                 <input onChange={updateData} type="text" className={styles["form"]} name="name" placeholder="Nombre"/>
                 <input onChange={updateData} type="text" className={styles["form"]} name="address" placeholder="Dirección"/>
-                <div className={styles['space']}>
+                
                 <button type="submit" className={"button--blue"}>create</button>
-                <button className={"button--white"}>cancel</button>
-                </div>
+               
+                
             </form>
             </section>
 
