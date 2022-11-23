@@ -4,7 +4,7 @@ import styles from "./form-sign-up-style.module.css";
 import { useState } from "react";
 import { toast } from 'react-toastify';
 import {sendSignUpData} from "../../services"
-
+import {useNavigate} from "react-router-dom"
 
 export default function SignUp() {
     const [formData,setFormData] = useState({
@@ -12,6 +12,7 @@ export default function SignUp() {
         password:""
 
     })
+    const navigate = useNavigate()
 
     const registerData = (event) => {
         const name = event.target.name
@@ -29,7 +30,9 @@ export default function SignUp() {
 
         try {
             //logica
-            await sendSignUpData(formData)
+            const response = await sendSignUpData(formData)
+            navigate('/sign-in')
+
         } catch (error) {
             toast.error("Ha habido un error al conectarse con el servidor")
         }

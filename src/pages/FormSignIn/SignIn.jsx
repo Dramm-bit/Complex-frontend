@@ -11,7 +11,6 @@ export default function SignIn() {
         password:""
     })
 
-    
     const updateData = (event) => { 
         const name = event.target.name
         const value = event.target.value
@@ -25,7 +24,7 @@ export default function SignIn() {
         event.preventDefault()
         try {
             const response = await sendSignInData(formData)
-            console.log(response)
+            localStorage.setItem('token', response.data.token)
         } catch (error) {
             console.error(error)
             toast.error("Ha habido un error al conectarse con el servidor")

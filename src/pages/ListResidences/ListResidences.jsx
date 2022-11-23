@@ -87,7 +87,7 @@ const ListResidences = () => {
                 ))
             }
 
-            {/* <section className={styles['container-card']}>
+            <section className={styles['container-card']}>
 
                 <div className={styles['content-card']} >
                       <div onClick={goToHouseDetails}>
@@ -107,7 +107,7 @@ const ListResidences = () => {
 
                 </div>
 
-            </section> */}
+            </section>
             <Footer />
 
 

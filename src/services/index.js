@@ -11,16 +11,15 @@ export const sendSignUpData = (data) => http.post('/signup', {
 })
 
 
-// export const getResidences = () => http.get('/api/v1/residences', getHeaders())
-export const getResidences = () => axios.get('/api/v1/residences').then(result => {console.log(result)}).catch(console.log)
+export const getResidences = () => http.get('/residences', getHeaders())
 
-export const createResidence = (data) => http.post(`/api/v1/residences`,data, getHeaders())
-export const createHouse = (data) => http.post(`/api/v1/houses`,data, getHeaders())
+export const createResidence = (data) => http.post(`/residences`,data, getHeaders())
+export const createHouse = (data) => http.post(`/houses`,data, getHeaders())
 
-export const deleteResidence = (id) => http.delete(`/api/v1/residences/${id}`, getHeaders())
-export const deleteHouse = (id) => http.delete(`/api/v1/residences/{residence_id}/house/${id}`, getHeaders())
+export const deleteResidence = (id) => http.delete(`/residences/${id}`, getHeaders())
+export const deleteHouse = (id) => http.delete(`/residences/{residence_id}/house/${id}`, getHeaders())
 
-// export const getHouses = (id) => http.get(`/api/v1/residences/${id}}/houses`, getHeaders())
-export const getHouses = (id) => axios.get(`localhost:8080/api/v1/residences/${id}/houses`).then(result =>{ console.log(result)}).catch(console.log)
+export const getHouses = (id) => http.get(`/residences/${id}}/houses`, getHeaders())
+
 
 

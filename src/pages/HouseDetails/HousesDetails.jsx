@@ -6,6 +6,10 @@ import { toast } from "react-toastify"
 
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
+import { InputText } from 'primereact/inputtext';
+import { InputNumber } from 'primereact/inputnumber';
+import { Dropdown } from 'primereact/dropdown';
+import { Button } from 'primereact/button';
 
 
 
@@ -49,8 +53,29 @@ const HousesDetails = () => {
             })
         }
     }
+    const columns = [
+        { field: 'id', header: 'Id' },
+        { field: 'name', header: 'Nombre del propietario' },
+    ];
 
+    const onCellEditComplete = (e) => {
+        let { rowData, newValue, field, originalEvent: event } = e;
 
+        switch (field) {
+           
+            default:
+                if (newValue.trim().length > 0)
+                    rowData[field] = newValue;
+                else
+                    event.preventDefault();
+                break;
+        }
+    }
+    const textEditor = (options) => {
+        return <InputText type="text" value={options.value} onChange={(e) => options.editorCallback(e.target.value)} />;
+    }
+
+   
     const goToEditHouse = (id) => navigate('/residences/house/edit/' + id)
     return (
         <>
@@ -70,16 +95,18 @@ const HousesDetails = () => {
                     </>
                 ))
             }
-            {/* <div className="card p-fluid">
-                <h5>Row Editing</h5>
-                <DataTable editMode="row" dataKey="id" onRowEditComplete={onRowEditComplete1} responsiveLayout="scroll"> */}
-                    {/* <Column field="code" header="Code" editor={(options) => textEditor(options)} style={{ width: '20%' }}></Column>
-                    <Column field="name" header="Name" editor={(options) => textEditor(options)} style={{ width: '20%' }}></Column>
-                    <Column field="inventoryStatus" header="Status" body={statusBodyTemplate} editor={(options) => statusEditor(options)} style={{ width: '20%' }}></Column>
-                    <Column field="price" header="Price" body={priceBodyTemplate} editor={(options) => priceEditor(options)} style={{ width: '20%' }}></Column>
-                    <Column rowEditor headerStyle={{ width: '10%', minWidth: '8rem' }} bodyStyle={{ textAlign: 'center' }}></Column>
+            
+            <div className="card p-fluid">
+                <h5>Cell Editing</h5>
+               
+                <DataTable value={houses} editMode="cell" className="editable-cells-table" responsiveLayout="scroll">
+                    {
+                        columns.map(({ field, header }) => {
+                            return <Column key={field} field={field} header={header} style={{ width: '25%' }}editor={(options) => textEditor(options)} onCellEditComplete={onCellEditComplete} />
+                        })
+                    }
                 </DataTable>
-            </div> */}
+            </div>
 
             <Footer />
         </>

@@ -13,7 +13,8 @@ export default function Header(props) {
     }
     const closeSession = () => {
         //eliminar cookies de session 
-        navigate('/')
+        localStorage.removeItem('token')
+        navigate('/sign-in')
     }
     const goToAnotherPage = () => {
         navigate(props.redirectPath)
