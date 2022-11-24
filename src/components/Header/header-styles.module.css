@@ -38,3 +38,16 @@
   }
 
   
+.button{
+    
+    width:150px;
+    cursor: pointer;
+    background: #25A7F0;
+    border: 2px solid #25A7F0;
+    border-radius: 7px;
+    color: white;
+    
+}
+.button:hover {
+    background: #208ece;
+  }

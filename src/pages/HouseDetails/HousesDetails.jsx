@@ -6,13 +6,18 @@ import { toast } from "react-toastify"
 
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
+import { InputText } from 'primereact/inputtext';
+import { InputNumber } from 'primereact/inputnumber';
+import { Dropdown } from 'primereact/dropdown';
+import { Button } from 'primereact/button';
 
 
 
 import Header from "../../components/Header/Header"
 import Footer from '../../components/Footer/Footer'
-import styles from "./residence-details-style.module.css"
-const ResidenceDetails = () => {
+import styles from "./houses-details-styles.module.css"
+
+const HousesDetails = () => {
     const [houses, setHouses] = useState([])
     const navigate = useNavigate()
     const { residenceId } = useParams();
@@ -40,7 +45,7 @@ const ResidenceDetails = () => {
             // se debe validar rol
             await deleteHouse(id)
         } catch (error) {
-            toast("Ha habido un error al eliminar la residencia", {
+            toast("Ha habido un error al eliminar la casa", {
                 hideProgressBar: true,
                 autoClose: 3000,
                 position: 'bottom-right'
@@ -48,8 +53,29 @@ const ResidenceDetails = () => {
             })
         }
     }
+    const columns = [
+        { field: 'id', header: 'Id' },
+        { field: 'name', header: 'Nombre del propietario' },
+    ];
 
+    const onCellEditComplete = (e) => {
+        let { rowData, newValue, field, originalEvent: event } = e;
 
+        switch (field) {
+           
+            default:
+                if (newValue.trim().length > 0)
+                    rowData[field] = newValue;
+                else
+                    event.preventDefault();
+                break;
+        }
+    }
+    const textEditor = (options) => {
+        return <InputText type="text" value={options.value} onChange={(e) => options.editorCallback(e.target.value)} />;
+    }
+
+   
     const goToEditHouse = (id) => navigate('/residences/house/edit/' + id)
     return (
         <>
@@ -59,64 +85,38 @@ const ResidenceDetails = () => {
             {
                 houses.map(house => (
                     <>
-                        <div>
+                        {/* <div>
                             <span>{house.id}</span>
                             <span>{house.name}</span>
                             <button className={"button--blue"} onClick={() => goToEditHouse(house.id)}>Editar</button>
                             <button onClick={() => removeHouse(house.id)}>Eliminar</button>
-                        </div>
+                        </div> */}
 
                     </>
                 ))
             }
-            {/* <DataTable scrollable scrollHeight="400px">
-                    <Column field="house.id" header="Id" style={{ minWidth: '200px' }}></Column>
-                    <Column field="house.name" header="Nombre del Conjunto" style={{ minWidth: '200px' }}></Column>
-                    <Column field="representative.name" header="Opciones" style={{ minWidth: '200px' }}></Column>
-                    
-                </DataTable>  */}
-
-
-
-
-
-
-            <div class={styles["container"]}>
-
-                <DataTable>
-
-                    <Column selectionMode="multiple" headerStyle={{ width: '2rem' }} exportable={false}></Column>
-                    <Column field="code" header="Code" style={{ minWidth: '12rem' }}></Column>
-                    <Column field="name" header="Name" style={{ minWidth: '16rem' }}></Column>
-                    
+            
+            <div className="card p-fluid">
+                <h5>Cell Editing</h5>
+               
+                <DataTable value={houses} editMode="cell" className="editable-cells-table" responsiveLayout="scroll">
+                    {
+                        columns.map(({ field, header }) => {
+                            return <Column key={field} field={field} header={header} style={{ width: '25%' }}editor={(options) => textEditor(options)} onCellEditComplete={onCellEditComplete} />
+                        })
+                    }
                 </DataTable>
-                <div>
-
-                    <div className={styles["options"]}>
-                        <div className={styles["title-header"]}>Opciones</div>
-                    </div > 
-                       <div className={styles["shadow"]}>
-                    <a href='' className={styles['text1']}>edit</a>
-                    <a href='' className={styles['text2']}>|delete</a>
-                </div>
-                </div>
-                
-
+                <div className={styles["options"]}>
+                                <div className={styles["title-header"]}>Opciones</div>
+                                <div className={styles["shadow"]}>
+                                   
+                                </div>
+                            </div>
             </div>
-
-
-
-
-
-
-
-
-
-
 
             <Footer />
         </>
     )
 }
 
-export default ResidenceDetails
+export default HousesDetails

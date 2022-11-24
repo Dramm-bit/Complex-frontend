@@ -4,14 +4,16 @@ import styles from "./form-sign-up-style.module.css";
 import { useState } from "react";
 import { toast } from 'react-toastify';
 import {sendSignUpData} from "../../services"
-
+import {useNavigate} from "react-router-dom"
 
 export default function SignUp() {
     const [formData,setFormData] = useState({
-        email:"",
-        password:""
+        username:"",
+        password:"",
+        role:""
 
     })
+    const navigate = useNavigate()
 
     const registerData = (event) => {
         const name = event.target.name
@@ -29,7 +31,9 @@ export default function SignUp() {
 
         try {
             //logica
-            await sendSignUpData(formData)
+            const response = await sendSignUpData(formData)
+            navigate('/sign-in')
+
         } catch (error) {
             toast.error("Ha habido un error al conectarse con el servidor")
         }
@@ -44,7 +48,7 @@ export default function SignUp() {
                 <form onSubmit={sendRegisterData} className={styles["content-form"]}>
                     <div className={styles["container-form__title"]}>Sign up for a new account</div>
 
-                <input onChange ={registerData} type="email" id={styles["size"]} name="email" placeholder="Email"></input>
+                <input onChange ={registerData} type="email" id={styles["size"]} name="username" placeholder="Email"></input>
                 <input onChange ={registerData} type="password" id={styles["size"]} name="password" placeholder="Password"></input>
                 <div id={styles['space']}>
                 <button type="submit" className={"button--blue"}>create</button>

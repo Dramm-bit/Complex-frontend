@@ -1,23 +1,31 @@
+import axios from "axios"
 import {http,getHeaders} from "../utils/axios"
-export const sendSignInData = (data) => http.post('/signin', {
-    username:data.email,
-    password:data.password
+export const sendSignInData = (data) => http.post('/auth/signin', data)
+
+export const sendSignUpData = (data) => http.post('/auth/signup',data)
+
+
+export const getResidences = () => http.get('/residences/list', {
+    headers:getHeaders()
 })
 
-export const sendSignUpData = (data) => http.post('/signup', {
-    username:data.email,
-    password:data.password
+export const createResidence = (data) => http.post(`/residences`,data, {
+    headers:getHeaders()
+})
+export const createHouse = (residenceId,data) => http.post(`/residences/${residenceId}`,data, {
+    headers:getHeaders()
 })
 
+export const deleteResidence = (id) => http.delete(`/residences/${id}`, {
+    headers:getHeaders()
+})
+export const deleteHouse = (id,residenceId) => http.delete(`/residences/${residenceId}/house/${id}`, {
+    headers:getHeaders()
+})
 
-export const getResidences = () => http.get('/api/v1/residences', getHeaders())
+export const getHouses = (id) => http.get(`/residences/${id}/houses`, {
+    headers:getHeaders()
+})
 
-export const createResidence = (data) => http.post(`/api/v1/residences`,data, getHeaders())
-export const createHouse = (data) => http.post(`/api/v1/houses`,data, getHeaders())
-
-export const deleteResidence = (id) => http.delete(`/api/v1/residences/${id}`, getHeaders())
-export const deleteHouse = (id) => http.delete(`/api/v1/residences/{residence_id}/house/${id}`, getHeaders())
-
-export const getHouses = (id) => http.get(`/api/v1/residences/${id}}/houses/`, getHeaders())
 
 

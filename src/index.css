@@ -67,6 +67,9 @@ color: #000000;
 
 
 }
+.header-img {
+  cursor: pointer;
+}
 
 .size-button {
  
