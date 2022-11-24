@@ -8,8 +8,9 @@ import {useNavigate} from "react-router-dom"
 
 export default function SignUp() {
     const [formData,setFormData] = useState({
-        email:"",
-        password:""
+        username:"",
+        password:"",
+        role:""
 
     })
     const navigate = useNavigate()
@@ -47,7 +48,7 @@ export default function SignUp() {
                 <form onSubmit={sendRegisterData} className={styles["content-form"]}>
                     <div className={styles["container-form__title"]}>Sign up for a new account</div>
 
-                <input onChange ={registerData} type="email" id={styles["size"]} name="email" placeholder="Email"></input>
+                <input onChange ={registerData} type="email" id={styles["size"]} name="username" placeholder="Email"></input>
                 <input onChange ={registerData} type="password" id={styles["size"]} name="password" placeholder="Password"></input>
                 <div id={styles['space']}>
                 <button type="submit" className={"button--blue"}>create</button>

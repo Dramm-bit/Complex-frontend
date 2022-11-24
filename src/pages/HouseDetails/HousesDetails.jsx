@@ -106,6 +106,12 @@ const HousesDetails = () => {
                         })
                     }
                 </DataTable>
+                <div className={styles["options"]}>
+                                <div className={styles["title-header"]}>Opciones</div>
+                                <div className={styles["shadow"]}>
+                                   
+                                </div>
+                            </div>
             </div>
 
             <Footer />

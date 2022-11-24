@@ -5,11 +5,13 @@ import styles from './form-create-house-styles.module.css';
 import { useParams } from 'react-router-dom'
 import {createHouse} from "../../services"
 import {toast} from "react-toastify"
+import {useNavigate} from "react-router-dom"
+
 export default function CreateHouse(){
     const [house, setHouse] = useState({
         name:""
     })
-    
+    const navigate = useNavigate()
     const { residenceId } = useParams();
     const updateData = (event) => { 
         const name = event.target.name
@@ -24,7 +26,9 @@ export default function CreateHouse(){
     const sendHouseData = async (event) => {
         event.preventDefault()
         try {
-            await createHouse(house)
+            await createHouse(residenceId,house)
+            toast.done("Casa creada")
+            navigate(`/residences/${residenceId}/houses`)
         } catch (error) {
             console.error(error)
             toast.error("Ha habido un error al crear la casa")

@@ -11,6 +11,8 @@ import { useNavigate } from "react-router-dom";
 
 const ListResidences = () => {
     const [residences, setResidences] = useState([])
+    const navigate = useNavigate()
+
     const retrieveResidences = useCallback(async () => {
         try {
             const response = await getResidences()
@@ -33,8 +35,10 @@ const ListResidences = () => {
         try {
             // se debe validar rol
             await deleteResidence(id)
+            await retrieveResidences()
+            toast.done("Residencia eliminada correctamente",)
         } catch (error) {
-            toast("Ha habido un error al eliminar la residencia", {
+            toast.error("Ha habido un error al eliminar la residencia", {
                 hideProgressBar: true,
                 autoClose: 3000,
                 position: 'bottom-right'
@@ -42,72 +46,45 @@ const ListResidences = () => {
             })
         }
     }
-    const navigate = useNavigate()
-    const goToHouseDetails = () => {
-        navigate('/residences/:residenceId/houses')
-
+    const goToHouseDetails = (residenceId) => {
+        navigate(`/residences/${residenceId}/houses`)
     }
 
-    const goToEditResidence = () => {
-        navigate('/:residenceId/edit')
+    const goToEditResidence = (residenceId) => {
+        navigate(`/residences/edit/${residenceId}`)
     }
 
     return (
         <>
             <Header redirectText='Crear conjunto' redirectPath={'/residences/create'} flag={false} />
-
-            {
-                residences.map(residence => (
-                    <div>
-
-
-
-                        <section className={styles['container-card']}>
+            <section className={styles['container-card']}>
+                {
+                    residences.map(residence => (
+                        <div key={residence.id}>
 
                             <div className={styles['content-card']} >
-                                <div onClick={goToHouseDetails}>
+                                <div onClick={() => goToHouseDetails(residence.id)}>
                                     <img alt="main_logo" src={thumbnail} className={styles['img']}></img>
                                     <div className={styles['text']}>
-                                        <div className={styles['title']}>{retrieveResidences.name}</div>
-                                        <div className={styles["subtitle"]}>x2</div>
+                                        <div className={styles['title']}>{residence.name}</div>
+                                        <div className={styles["subtitle"]}>{residence.address}</div>
                                     </div>
                                 </div>
                                 <div className={styles["options"]}>
-                                    <div className={styles["title-option"]}>Opciones</div>
+                                    <div className={styles["title-option"]}></div>
                                     <div className={styles["shadow"]}>
-                                        <span className={styles['text2']} >|delete</span>
-                                        <span className={styles['text1']} onClick={goToEditResidence}>edit</span>
+                                        <span onClick={() => removeResidence(residence.id)} className={styles['text2']} >|delete</span>
+                                        <span className={styles['text1']} onClick={() => goToEditResidence(residence.id)}>edit</span>
                                     </div>
                                 </div>
 
                             </div>
 
-                        </section>
-                    </div>
-                ))
-            }
-
-            <section className={styles['container-card']}>
-
-                <div className={styles['content-card']} >
-                      <div onClick={goToHouseDetails}>
-                        <img alt="main_logo" src={thumbnail} className={styles['img']}></img>
-                        <div className={styles['text']}>
-                            <div className={styles['title']}>hola que hace</div>
-                            <div className={styles["subtitle"]}>x2</div>
                         </div>
-                      </div>
-                    <div className={styles["options"]}>
-                        <div className={styles["title-option"]}>Opciones</div>
-                        <div className={styles["shadow"]}>
-                            <span className={styles['text2']} >|delete</span>
-                            <span className={styles['text1']} onClick={goToEditResidence}>edit</span>
-                        </div>
-                    </div>
-
-                </div>
-
+                    ))
+                }
             </section>
+
             <Footer />
 
 
