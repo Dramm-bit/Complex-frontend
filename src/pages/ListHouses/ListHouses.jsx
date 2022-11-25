@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
-import { getResidences, deleteResidence, getHouses, deleteHouse } from "../../services"
+import { getResidences, deleteResidence, getHouses, deleteHouse, updateHouse } from "../../services"
 import { toast } from 'react-toastify';
 import thumbnail from '../../resources/thumbnail.jpg';
 import styles from './list-houses-style.module.css';
-import { useNavigate, useParams } from "react-router-dom";
+import { Router, useNavigate, useParams } from "react-router-dom";
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 
@@ -19,6 +19,7 @@ const ListHouses = () => {
     const retrieveHouses = useCallback(async () => {
         try {
             const response = await getHouses(residenceId)
+            console.log(response)
 
             setHouses(response.data)
         } catch (error) {
@@ -56,8 +57,8 @@ const ListHouses = () => {
         }
     }
 
+     const goToEditHouse = (id) => navigate(`/residences/${residenceId}/houses/` + id)
 
-    const goToEditHouse = (id) => navigate('/residences/house/edit/' + id)
     return (
         <>
             <Header redirectText='Crear casa' redirectPath={`/residences/${residenceId}/houses/create`} flag={false} />
@@ -65,16 +66,9 @@ const ListHouses = () => {
 
 
 
-            <>
-                {/* <div>
-                            <span>{houses.id}</span>
-                            <span>{houses.name}</span>
-                            <button className={"button--blue"} onClick={() => goToEditHouse(houses.id)}>Editar</button>
-                            <button onClick={() => removeHouse(houses.id)}>Eliminar</button>
-                        </div> */}
-
-
-                <table className="table">
+            <div className={'father'}>
+                <div className={'title-logo'}>Lista de casas</div>
+                <table border='3' className="table table-hover" >
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -86,75 +80,31 @@ const ListHouses = () => {
                         {
                             houses.map(house => (
                                 <tr key={house.id}>
+                                    
                                     <th scope="row">{house.id}</th>
-                                    <td>{house.name}</td>
+                                   
+                                    <td>{house.tower}</td>
                                     <td>
                                         <div>
-                                            <button onClick={() => goToEditHouse(house.id)}>Editar</button>
+                                            <button onClick={() => goToEditHouse (house.id)}>Editar</button>
                                             <button onClick={() => removeHouse(house.id)}>Eliminar</button>
                                         </div>
                                     </td>
+ 
                                 </tr>
+                                
                             ))
                         }
 
 
                     </tbody>
                 </table>
-                {/*  <div class={styles["container"]}>
-
-                            <DataTable value={houses}>
-
-                                <Column selectionMode="multiple" headerStyle={{ width: '2rem' }} exportable={false}></Column>
-                                <Column field="code" header="Code" style={{ minWidth: '12rem' }}></Column>
-                                <Column field="name" header="Name" style={{ minWidth: '16rem' }}></Column>
-
-                            </DataTable>
-                            <div className={styles["options"]}>
-                                <div className={styles["title-header"]}>Opciones</div>
-                                <div className={styles["shadow"]}>
-                                    <span className={styles['text1']} onClick={goToEditHouse}>edit</span>
-                                    <span className={styles['text2']} onClick={() => removeHouse(houses.id)}>|delete</span>
-                                </div>
-                            </div>
-
-
-                        </div>
- */}
-
-            </>
-
-
-
-            {/* <div class={styles["container"]}>
-
-                <div class={styles["group"]}>
-                    <div className={styles['title']}>Lista de casas del conjunto </div> como concadenar con el nombre del conjunto  */}
-
-            {/* <DataTable>
-
-                        <Column selectionMode="multiple" headerStyle={{ width: '2rem' }} exportable={false}></Column>
-                        <Column field="code" header="Code" style={{ minWidth: '12rem' }}></Column>
-                        <Column field="name" header="Name" style={{ minWidth: '16rem' }}></Column>
-
-                    </DataTable>
-                </div>
-                <div className={styles["options"]}>
-                    <div className={styles["title-option"]}>Opciones</div>
-                    <div className={styles["shadow"]}>
-                        <span className={styles['text1']} onClick={goToEditHouse}>edit</span>
-                        <span className={styles['text2']} >|delete</span>
+                
                     </div>
-                </div>
-
-
-            </div> */}
-
-
             <Footer />
         </>
     )
+                    
 }
-
 export default ListHouses
 
