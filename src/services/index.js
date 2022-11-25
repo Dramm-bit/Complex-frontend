@@ -27,5 +27,6 @@ export const getHouses = (id) => http.get(`/residences/${id}/houses`, {
     headers:getHeaders()
 })
 
+export const updateHouse = (residenceId,id) => http.put(`${residenceId}/house/${id}`)
 
 

@@ -11,12 +11,15 @@ import { useNavigate } from "react-router-dom";
 
 const ListResidences = () => {
     const [residences, setResidences] = useState([])
+
+    
     const navigate = useNavigate()
 
     const retrieveResidences = useCallback(async () => {
         try {
             const response = await getResidences()
             setResidences(response.data)
+            console.log(response.data)
         } catch (error) {
             console.error(error)
             toast("Ha habido un error al obtener las residencias", {

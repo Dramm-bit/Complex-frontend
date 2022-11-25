@@ -9,7 +9,7 @@ export default function CreateResidence(){
     const [residence, setResidence] = useState({
         name:"",
         address:"",
-        amount:""
+        paymentConfig:""
     })
     const navigate = useNavigate()
 
