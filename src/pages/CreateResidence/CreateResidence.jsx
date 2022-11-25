@@ -22,6 +22,9 @@ export default function CreateResidence(){
             [name]:value
         })
     }
+
+ 
+
     const sendResidenceData = async (event) => {
         event.preventDefault()
         try {

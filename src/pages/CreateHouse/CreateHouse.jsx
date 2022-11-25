@@ -3,7 +3,7 @@ import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import styles from './form-create-house-styles.module.css';
 import { useParams } from 'react-router-dom'
-import {createHouse, getHouses, updateHouse} from "../../services"
+import {createHouse, getHouseById, getHouses, updateHouse} from "../../services"
 import {toast} from "react-toastify"
 import {useNavigate} from "react-router-dom"
 
@@ -28,8 +28,8 @@ export default function CreateHouse(){
     
     useEffect(()=>{
         const bringHouses = async ()=>{
-            const {data} = await getHouses(residenceId)
-            setHouse({tower: data.tower})
+            const {data} = await getHouseById(residenceId,houseId);
+            setHouse(data)
             // console.log("aqui",data)
             
         }
@@ -39,27 +39,24 @@ export default function CreateHouse(){
         //    console.log(house)
         }
 
-    },[residenceId])
+    },[])
 
+
+    
     const sendHouseData = async (event) => {
         event.preventDefault()
         
         try {
-            
             if(houseId){
-               
-                await updateHouse(residenceId,houseId)
-                toast.done("Casa Actualizada")
+                const {data} =await updateHouse(residenceId, houseId, house)
+                setHouse(data)
                 navigate(`/residences/${residenceId}/houses`)
-                
-            }
-            else{
-
+            }else{
+            
                 await createHouse(residenceId,house)
                 toast.done("Casa creada")
                 navigate(`/residences/${residenceId}/houses`)
             }
-
 
         } catch (error) {
          

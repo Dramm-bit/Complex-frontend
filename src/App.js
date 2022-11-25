@@ -14,7 +14,8 @@ import CreateHouse from "./pages/CreateHouse/CreateHouse"
 import CreateResidence from "./pages/CreateResidence/CreateResidence"
 import ListHouses from "./pages/ListHouses/ListHouses"
 import Guardian from "./middlewares/Guardian"
-import HouseEdit from "./pages/HouseDetails/HouseEdit";
+import HouseEdit from "./pages/HouseEdit/HouseEdit";
+import ResidencesEdit from "./pages/ResidenceEdit/ResidenceEdit";
 
 function App() {
   
@@ -32,7 +33,7 @@ function App() {
             <Route path="/residences/:residenceId/houses/create" element={<CreateHouse/>}/>  {/* agregar guardian */}
             <Route path="/residences/:residenceId/houses" element={<ListHouses/>}/> {/* agregar guardian */}
             <Route path="/residences/:residenceId/houses/:houseId" element={<HouseEdit/>}/>  {/* agregar guardian */}
-            <Route path="/residences/edit/:residenceId" element={<ListHouses/>}/>  {/* agregar guardian */}
+            <Route path="/residences/edit/:residenceId" element={<ResidencesEdit/>}/>  {/* agregar guardian */}
         </Routes>
 
       </BrowserRouter>

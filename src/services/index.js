@@ -27,6 +27,15 @@ export const getHouses = (id) => http.get(`/residences/${id}/houses`, {
     headers:getHeaders()
 })
 
-export const updateHouse = (residenceId,id) => http.put(`${residenceId}/house/${id}`)
+export const updateHouse = (residenceId,id, data) => http.put(`/residences/${residenceId}/house/${id}`,data,{
+    headers:getHeaders()
+})
 
 
+export const getHouseById = (residenceId,id) => http.get(`/residences/${residenceId}/house/${id}`,{
+    headers:getHeaders()
+})
+
+export const getResidenceById = (residenceId) => http.get(`/residences/edit/${residenceId}`,{
+    headers:getHeaders()
+})
